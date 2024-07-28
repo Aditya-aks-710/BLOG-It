@@ -1,0 +1,72 @@
+<%- include("partials/header.ejs") %>
+
+<script>
+  var len = document.querySelectorAll(".nav-link").length; 
+  for(let i = 1; i < len; i++){ 
+    document.querySelectorAll(".nav-link")[i].classList.remove("active");
+  }
+  document.querySelectorAll(".nav-link")[1].classList.add("active");
+</script>
+
+<div class="bdy">
+  <div class="bdy-internal">
+
+    <% if(post.length > 0) { %>
+      <% post.forEach((post) => { %>
+        <div class="bdy-1">
+          <h4 class="bdy-cont"><%= post.title %></h4>
+          <hr class="inline" size="2" noshade>
+          <p class="content">
+            <%= post.content %>
+          </p>
+          <div class="each-footer">
+            <div class="pub-date"><p><%= post.date %></p></div>
+            <div class="edit">
+              <a href="/edit/<%= post.id %>"><img class="edit-btn" src="images/Edit.png"></a>
+              <form action="/delete/<%= post.id %>" method="POST"><button type="submit"><img class="edit-btn" src="images/Delete.png"></button> </form> 
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    <% } else { %>
+      <div class="empty-container">
+        <img class="empty-img" alt="image showing Nothing" src="/images/man.png">
+      </div>
+      <div class="empty-text">
+        <h1>Oooppss!!!</h1>
+        <p>Nothing To show, <a class="alt-link" href="/create">Create</a> Some :)</p>
+      </div>
+    <% } %>
+  </div>
+
+  <div class="bdy-internal-2">
+    <div class="bdy-2">
+      <a class="btn-link" href="/create">Create</a>
+    </div>
+    <div class="bdy-2">
+      <h4>Recent Blogs</h4>
+      <hr>
+      <% if(post.length > 0) { %>
+      <div class="extra">
+        <li>
+            <% post.forEach((post) => { %>
+              <ul>
+                <p><%= post.title %></p>
+              </ul>
+              <hr>
+            <% }) %>
+        </li>
+      </div>
+      <% } else { %>
+        <div class="empty-extra">
+          <img class="empty-recent" src="/images/nothing.png">
+          <p>Nothing Here....</p>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+
+
+<%- include("partials/footer.ejs") %>

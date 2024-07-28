@@ -1,0 +1,64 @@
+<%- include("partials/header.ejs") %>
+
+<script>
+  var len = document.querySelectorAll(".nav-link").length; 
+  for(let i = 1; i < len; i++){ 
+    document.querySelectorAll(".nav-link")[i].classList.remove("active");
+  }
+  document.querySelectorAll(".nav-link")[3].classList.add("active");
+</script>
+
+<div class="header-contact">
+  <h1>Contact Us</h1>
+</div>
+<div class="contact-ex">
+  <div class="first contact-size">
+  </div>
+  <div class="second contact-size">
+    <form action="/contact" method="POST" class="contact-form">
+      <label for="title" class="contact-label">First Name</label>
+      <input
+        type="text"
+        name="fname"
+        id="fname"
+        class="contact-input"
+        placeholder="First Name"
+        required
+      />
+
+      <label for="title" class="contact-label">Last Name</label>
+      <input
+        type="text"
+        name="lname"
+        id="lname"
+        class="contact-input"
+        placeholder="Last Name"
+        required
+      />
+
+      <label for="title" class="contact-label">Email Address</label>
+      <input
+        type="text"
+        name="email"
+        id="email"
+        class="contact-input"
+        placeholder="xyz@gmail.com"
+        required
+      />
+
+      <label for="content" class="contact-label">Message</label>
+      <textarea
+        name="message"
+        id="message"
+        class="contact-textarea"
+        placeholder="Write your message here "
+        required
+      ></textarea>
+
+      <button type="submit" class="contact-submit">Submit</button>
+  </form>
+  </div>
+</div>
+
+  
+<%- include("partials/footer.ejs") %>

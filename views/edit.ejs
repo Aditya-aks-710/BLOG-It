@@ -1,0 +1,36 @@
+<%- include("partials/header.ejs") %>
+
+<script>
+  var len = document.querySelectorAll(".nav-link").length; 
+  for(let i = 1; i < len; i++){ 
+    document.querySelectorAll(".nav-link")[i].classList.remove("active");
+  }
+</script>
+
+<div class="create-container">
+    <form action="/edit/<%= id %>" method="POST" class="create-form">
+        <label for="title" class="create-label">Title</label>
+        <input
+          type="text"
+          name="title"
+          id="title"
+          class="create-input"
+          value="<%= title %>"
+          placeholder="Title of your Blog"
+          required
+        />
+
+        <label for="content" class="create-label">Content</label>
+        <textarea
+          name="content"
+          id="content"
+          class="create-textarea"
+          placeholder="Content of your Blog"
+          required
+        ><%= content %></textarea>
+
+        <button type="submit" class="create-submit">Submit</button>
+    </form>
+</div>
+
+<%- include("partials/footer.ejs") %>
